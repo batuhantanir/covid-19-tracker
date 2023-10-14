@@ -14,6 +14,7 @@ import { data } from "autoprefixer";
 import {
   countrySelector,
   covid19Selector,
+  isLoadingSelector,
 } from "../../store/Slices/covid19Slice";
 
 const index = () => {
@@ -89,6 +90,12 @@ const index = () => {
       },
     ],
   };
+
+  const isLoading = useSelector(isLoadingSelector);
+
+
+
+
   return <div className="w-[75%] my-5">
     <Bar  options={options} data={data} />
     </div>

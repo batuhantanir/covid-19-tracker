@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Cards from "./components/Cards";
 import CountryInput from "./components/CountryInput";
 import Chart from "./components/Chart";
+import Loading from "./components/Loading";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,15 +24,9 @@ function App() {
   return (
     <div className="flex flex-col items-center bg-[#FAFAFA] min-h-screen">
       <Header />
-      {isLoading === false ? (
-        <>
-          <Cards />
-          <CountryInput />
-          <Chart />
-        </>
-      ) : (
-        <div>loading...</div>
-      )}
+      {isLoading === false ? <Cards /> : <Loading />}
+      <CountryInput />
+      {isLoading === false ? <Chart /> : <Loading />}
     </div>
   );
 }
