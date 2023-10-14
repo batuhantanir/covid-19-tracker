@@ -1,0 +1,19 @@
+#Infected {
+  border-color: #5b79ff;
+  background-color: #b1d7fe;
+}
+
+#Recovered {
+  border-color: #7efb83;
+  background-color: #ddf6e2;
+}
+
+#Deaths {
+  border-color: #FA7077;
+  background-color: #F4D7D7;
+}
+
+#Active {
+  border-color: #F2E678;
+  background-color: #F4E1CA;
+}
