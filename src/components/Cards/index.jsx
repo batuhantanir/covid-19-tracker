@@ -5,7 +5,6 @@ import { covid19Selector } from "../../store/Slices/covid19Slice";
 
 const Cards = () => {
   const data = useSelector(covid19Selector)[0];
-  console.log(data);
   return (
     <div className="flex justify-center mt-14">
       {/* Infected */}

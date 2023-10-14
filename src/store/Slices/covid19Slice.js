@@ -4,10 +4,11 @@ import axios from "axios";
 export const covid19Selector = (state) => state.covid19.data;
 export const isLoadingSelector = (state) => state.covid19.isLoading;
 export const errorSelector = (state) => state.covid19.error;
+export const countrySelector = (state) => state.covid19.country;
 
 export const fetchCovid19 = createAsyncThunk(
   "covid19/fetchCovid19",
-  async () => {
+  async ({ country }) => {
     const option = {
       method: "GET",
       headers: {
@@ -15,7 +16,10 @@ export const fetchCovid19 = createAsyncThunk(
         "content-type": "application/json",
       },
     };
-    const response = await axios.request(import.meta.env.VITE_API_URL, option);
+    const response = await axios.request(
+      `https://api.collectapi.com/corona/countriesData?country=${country}`,
+      option
+    );
     const data = response.data;
     return data.result;
   }
@@ -27,8 +31,13 @@ export const covid19Slice = createSlice({
     data: [],
     isLoading: true,
     error: null,
+    country: "China",
   },
-  reducers: {},
+  reducers: {
+    setCountry: (state, { payload }) => {
+      payload != "" && (state.country = payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCovid19.pending, (state) => {
       state.isLoading = true;
@@ -44,5 +53,5 @@ export const covid19Slice = createSlice({
   },
 });
 
-export const { setCovid19 } = covid19Slice.actions;
+export const { setCountry } = covid19Slice.actions;
 export default covid19Slice.reducer;

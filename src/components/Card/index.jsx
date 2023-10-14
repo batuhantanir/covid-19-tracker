@@ -10,7 +10,7 @@ const Card = ({ total, title }) => {
     >
       <h3 className="mb-3">{title}</h3>
       <div className="font-bold">
-        {total == "" ? <div>0</div> : <div>{total}</div>}
+        {total == "" || total == "N/A" ? <div>0</div> : <div>{total}</div>}
       </div>
       <p className="mt-2 ">
         Last Updated at:
